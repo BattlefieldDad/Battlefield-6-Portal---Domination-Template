@@ -1,0 +1,2487 @@
+{
+    "Portal_Dynamic": [
+        {
+            "name": "TEAM_1_HQ",
+            "ObjId": 1,
+            "CameraAutoFOV": true,
+            "InfantrySpawns": [
+                "TEAM_1_HQ/SpawnPoint_1_1",
+                "TEAM_1_HQ/SpawnPoint_1_2",
+                "TEAM_1_HQ/SpawnPoint_1_3",
+                "TEAM_1_HQ/SpawnPoint_1_4",
+                "TEAM_1_HQ/SpawnPoint_1_5",
+                "TEAM_1_HQ/SpawnPoint_1_6"
+            ],
+            "HQArea": "TEAM_1_HQ/PolygonVolume",
+            "type": "HQ_PlayerSpawner",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -65.0814,
+                "y": 134.291,
+                "z": 119.112
+            },
+            "id": "TEAM_1_HQ",
+            "linked": [
+                "HQArea",
+                "InfantrySpawns"
+            ]
+        },
+        {
+            "name": "SpawnPoint_1_1",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -68.34637,
+                "y": 134.291,
+                "z": 75.2236
+            },
+            "id": "TEAM_1_HQ/SpawnPoint_1_1"
+        },
+        {
+            "name": "SpawnPoint_1_2",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -29.9249,
+                "y": 133.779876,
+                "z": 63.8327
+            },
+            "id": "TEAM_1_HQ/SpawnPoint_1_2"
+        },
+        {
+            "name": "SpawnPoint_1_3",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -45.0668,
+                "y": 134.291,
+                "z": 76.4274
+            },
+            "id": "TEAM_1_HQ/SpawnPoint_1_3"
+        },
+        {
+            "name": "SpawnPoint_1_4",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -18.8089,
+                "y": 134.291,
+                "z": 94.6671
+            },
+            "id": "TEAM_1_HQ/SpawnPoint_1_4"
+        },
+        {
+            "name": "SpawnPoint_1_5",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -66.62866,
+                "y": 134.291,
+                "z": 116.25065
+            },
+            "id": "TEAM_1_HQ/SpawnPoint_1_5"
+        },
+        {
+            "name": "SpawnPoint_1_6",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -65.568888,
+                "y": 134.291,
+                "z": 117.45878
+            },
+            "id": "TEAM_1_HQ/SpawnPoint_1_6"
+        },
+        {
+            "name": "PolygonVolume",
+            "type": "PolygonVolume",
+            "metadata/_custom_type_script": "uid://ck5uniw0pl6u8",
+            "color": [
+                0,
+                0.6,
+                0.7,
+                0.42
+            ],
+            "id": "TEAM_1_HQ/PolygonVolume",
+            "height": 0,
+            "points": [
+                {
+                    "x": -70.0814,
+                    "y": 134.291,
+                    "z": 114.112
+                },
+                {
+                    "x": -70.0814,
+                    "y": 134.291,
+                    "z": 124.112
+                },
+                {
+                    "x": -60.0814,
+                    "y": 134.291,
+                    "z": 124.112
+                },
+                {
+                    "x": -60.0814,
+                    "y": 134.291,
+                    "z": 114.112
+                }
+            ]
+        },
+        {
+            "name": "TEAM_2_HQ",
+            "Team": "Team2",
+            "ObjId": 2,
+            "CameraAutoFOV": true,
+            "InfantrySpawns": [
+                "TEAM_2_HQ/SpawnPoint_2_1",
+                "TEAM_2_HQ/SpawnPoint_2_2",
+                "TEAM_2_HQ/SpawnPoint_2_3",
+                "TEAM_2_HQ/SpawnPoint_2_4",
+                "TEAM_2_HQ/SpawnPoint_2_5",
+                "TEAM_2_HQ/SpawnPoint_2_6"
+            ],
+            "HQArea": "TEAM_2_HQ/PolygonVolume",
+            "type": "HQ_PlayerSpawner",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -6.97638,
+                "y": 134.92,
+                "z": 107.111
+            },
+            "id": "TEAM_2_HQ",
+            "linked": [
+                "HQArea",
+                "InfantrySpawns"
+            ]
+        },
+        {
+            "name": "SpawnPoint_2_1",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.87795,
+                "y": 0,
+                "z": 0.478754
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.478754,
+                "y": 0,
+                "z": 0.87795
+            },
+            "position": {
+                "x": -19.93748,
+                "y": 134.395067,
+                "z": 66.2232
+            },
+            "id": "TEAM_2_HQ/SpawnPoint_2_1"
+        },
+        {
+            "name": "SpawnPoint_2_2",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.87795,
+                "y": 0,
+                "z": 0.478754
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.478754,
+                "y": 0,
+                "z": 0.87795
+            },
+            "position": {
+                "x": -74.11028,
+                "y": 134.857973,
+                "z": 84.5967
+            },
+            "id": "TEAM_2_HQ/SpawnPoint_2_2"
+        },
+        {
+            "name": "SpawnPoint_2_3",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.87795,
+                "y": 0,
+                "z": 0.478754
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.478754,
+                "y": 0,
+                "z": 0.87795
+            },
+            "position": {
+                "x": -19.28488,
+                "y": 135.515108,
+                "z": 99.51217
+            },
+            "id": "TEAM_2_HQ/SpawnPoint_2_3"
+        },
+        {
+            "name": "SpawnPoint_2_4",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.87795,
+                "y": 0,
+                "z": 0.478754
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.478754,
+                "y": 0,
+                "z": 0.87795
+            },
+            "position": {
+                "x": -65.06658,
+                "y": 134.563967,
+                "z": 107.0783004
+            },
+            "id": "TEAM_2_HQ/SpawnPoint_2_4"
+        },
+        {
+            "name": "SpawnPoint_2_5",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.87795,
+                "y": 0,
+                "z": 0.478754
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.478754,
+                "y": 0,
+                "z": 0.87795
+            },
+            "position": {
+                "x": -46.48218,
+                "y": 134.857973,
+                "z": 68.564
+            },
+            "id": "TEAM_2_HQ/SpawnPoint_2_5"
+        },
+        {
+            "name": "SpawnPoint_2_6",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.87795,
+                "y": 0,
+                "z": 0.478754
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.478754,
+                "y": 0,
+                "z": 0.87795
+            },
+            "position": {
+                "x": -2.20017,
+                "y": 134.857973,
+                "z": 97.89598
+            },
+            "id": "TEAM_2_HQ/SpawnPoint_2_6"
+        },
+        {
+            "name": "PolygonVolume",
+            "type": "PolygonVolume",
+            "metadata/_custom_type_script": "uid://ck5uniw0pl6u8",
+            "color": [
+                0,
+                0.6,
+                0.7,
+                0.42
+            ],
+            "id": "TEAM_2_HQ/PolygonVolume",
+            "height": 0,
+            "points": [
+                {
+                    "x": -10.75036,
+                    "y": 135.02112,
+                    "z": 93.87621
+                },
+                {
+                    "x": -10.75036,
+                    "y": 135.02112,
+                    "z": 103.87621
+                },
+                {
+                    "x": -0.75036,
+                    "y": 135.02112,
+                    "z": 103.87621
+                },
+                {
+                    "x": -0.75036,
+                    "y": 135.02112,
+                    "z": 93.87621
+                }
+            ]
+        },
+        {
+            "name": "CombatArea",
+            "CombatVolume": "CombatArea/CollisionPolygon3D",
+            "type": "CombatArea",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": 1458.32,
+                "y": 33.5003,
+                "z": 0
+            },
+            "id": "CombatArea",
+            "linked": [
+                "CombatVolume"
+            ]
+        },
+        {
+            "name": "CollisionPolygon3D",
+            "type": "PolygonVolume",
+            "metadata/_custom_type_script": "uid://ck5uniw0pl6u8",
+            "color": [
+                0,
+                0.6,
+                0.7,
+                0.42
+            ],
+            "id": "CombatArea/CollisionPolygon3D",
+            "height": 0,
+            "points": [
+                {
+                    "x": -74.334,
+                    "y": 140.2753,
+                    "z": 76.81087
+                },
+                {
+                    "x": -67.7019,
+                    "y": 140.2753,
+                    "z": 128.5167
+                },
+                {
+                    "x": 6.97058,
+                    "y": 140.2753,
+                    "z": 106.6553
+                },
+                {
+                    "x": -17.4699,
+                    "y": 140.2753,
+                    "z": 61.5816
+                }
+            ]
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -73.0000067308,
+                "y": 133.9999878219,
+                "z": 80
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A4",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -59.74031139119,
+                "y": 134.03159479074,
+                "z": 75.96869
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A4"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A6",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -53.11040895461,
+                "y": 134.04740948236,
+                "z": 73.95303
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A6"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A8",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -66.37011205879,
+                "y": 134.01577353574,
+                "z": 77.98434
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A8"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A10",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -39.850617281219,
+                "y": 134.078989603374,
+                "z": 69.92171
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A10"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A12",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -33.22073390434,
+                "y": 134.0948104373,
+                "z": 67.90606
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A12"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A16",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -46.48050014046,
+                "y": 134.0631707013,
+                "z": 71.937378
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A16"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A18",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.20495417008,
+                "y": 0.01001972148,
+                "z": -1.27841
+            },
+            "up": {
+                "x": 0.00233828034,
+                "y": 4.39480470996,
+                "z": 0.0421529
+            },
+            "front": {
+                "x": 1.278448078406,
+                "y": -0.041009934776,
+                "z": 4.20475
+            },
+            "position": {
+                "x": -26.59081732562,
+                "y": 134.11060063402,
+                "z": 65.8904
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A18"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A21",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": -2.05333199706,
+                "y": 0.08412776298,
+                "z": -3.88495
+            },
+            "up": {
+                "x": 0.15710227664,
+                "y": 4.39217940425,
+                "z": 0.0120758
+            },
+            "front": {
+                "x": 3.882687500257,
+                "y": -0.133229691032,
+                "z": -2.05501
+            },
+            "position": {
+                "x": 4.5371118056,
+                "y": 134.3295440021,
+                "z": 104.599
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A21"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A28",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 3.75891631938,
+                "y": 0.27677215892,
+                "z": -2.26053
+            },
+            "up": {
+                "x": -0.18908569897,
+                "y": 4.38529481434,
+                "z": 0.222503
+            },
+            "front": {
+                "x": 2.269542092791,
+                "y": -0.093041764656,
+                "z": 3.76252
+            },
+            "position": {
+                "x": -1.4049096094,
+                "y": 134.3135050463,
+                "z": 107.599
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A28"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A29",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.39058842155,
+                "y": 0.1131377396,
+                "z": -0.161436
+            },
+            "up": {
+                "x": -0.12214108868,
+                "y": 4.3863129758,
+                "z": -0.247927
+            },
+            "front": {
+                "x": 0.154734316202,
+                "y": 0.252164148777,
+                "z": 4.38504
+            },
+            "position": {
+                "x": -66.40891451227,
+                "y": 132.29920548742,
+                "z": 127.629
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A29"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A22",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": -2.05333199706,
+                "y": 0.08412776298,
+                "z": -3.88495
+            },
+            "up": {
+                "x": 0.15710227664,
+                "y": 4.39217940425,
+                "z": 0.0120758
+            },
+            "front": {
+                "x": 3.882687500257,
+                "y": -0.133229691032,
+                "z": -2.05501
+            },
+            "position": {
+                "x": 1.299723623,
+                "y": 134.4621601139,
+                "z": 98.4736
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A22"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A23",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": -2.05333199706,
+                "y": 0.08412776298,
+                "z": -3.88495
+            },
+            "up": {
+                "x": 0.15710227664,
+                "y": 4.39217940425,
+                "z": 0.0120758
+            },
+            "front": {
+                "x": 3.882687500257,
+                "y": -0.133229691032,
+                "z": -2.05501
+            },
+            "position": {
+                "x": -1.9377611522,
+                "y": 134.5948021076,
+                "z": 92.3483
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A23"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A24",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": -2.05333199706,
+                "y": 0.08412776298,
+                "z": -3.88495
+            },
+            "up": {
+                "x": 0.15710227664,
+                "y": 4.39217940425,
+                "z": 0.0120758
+            },
+            "front": {
+                "x": 3.882687500257,
+                "y": -0.133229691032,
+                "z": -2.05501
+            },
+            "position": {
+                "x": -5.17517131086,
+                "y": 133.72740930176,
+                "z": 86.223
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A24"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A25",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": -2.05333199706,
+                "y": 0.08412776298,
+                "z": -3.88495
+            },
+            "up": {
+                "x": 0.15710227664,
+                "y": 4.39217940425,
+                "z": 0.0120758
+            },
+            "front": {
+                "x": 3.882687500257,
+                "y": -0.133229691032,
+                "z": -2.05501
+            },
+            "position": {
+                "x": -8.41264055692,
+                "y": 133.86010925102,
+                "z": 80.09763
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A25"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A26",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": -2.05333199706,
+                "y": 0.08412776298,
+                "z": -3.88495
+            },
+            "up": {
+                "x": 0.15710227664,
+                "y": 4.39217940425,
+                "z": 0.0120758
+            },
+            "front": {
+                "x": 3.882687500257,
+                "y": -0.133229691032,
+                "z": -2.05501
+            },
+            "position": {
+                "x": -11.65014471999,
+                "y": 132.99275198634,
+                "z": 73.97229
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A26"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A27",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": -2.05333199706,
+                "y": 0.08412776298,
+                "z": -3.88495
+            },
+            "up": {
+                "x": 0.15710227664,
+                "y": 4.39217940425,
+                "z": 0.0120758
+            },
+            "front": {
+                "x": 3.882687500257,
+                "y": -0.133229691032,
+                "z": -2.05501
+            },
+            "position": {
+                "x": -15.88760754036,
+                "y": 133.12537662556,
+                "z": 67.84695
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A27"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A30",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -58.87619716469,
+                "y": 133.58213049874,
+                "z": 127.3349
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A30"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A39",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 0.4883881744902,
+                "y": -0.1690692148842,
+                "z": 4.36452
+            },
+            "up": {
+                "x": -0.04944271534,
+                "y": 4.39122462231,
+                "z": 0.175636
+            },
+            "front": {
+                "x": -4.36750844391,
+                "y": -0.06861416475,
+                "z": 0.486064
+            },
+            "position": {
+                "x": -71.87626706402,
+                "y": 133.58212432922,
+                "z": 78.3349
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A39"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A31",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -52.34359454827,
+                "y": 133.86498750502,
+                "z": 125.0408
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A31"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A32",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -45.810948035473,
+                "y": 134.147815149608,
+                "z": 122.7467
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A32"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A33",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -39.27828754645,
+                "y": 134.4306949542,
+                "z": 120.4526
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A33"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A34",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -32.7456437048,
+                "y": 134.71355126698,
+                "z": 118.1585
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A34"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A35",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -26.21298572101,
+                "y": 134.99638308486,
+                "z": 115.8644
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A35"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A36",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -19.68037275183,
+                "y": 135.27927872818,
+                "z": 113.5703
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A36"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A37",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -13.14767354281,
+                "y": 135.56210985256,
+                "z": 111.2761
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A37"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A38",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 4.14329204703,
+                "y": 0.17940057998,
+                "z": -1.45502
+            },
+            "up": {
+                "x": -0.13690043796,
+                "y": 4.39026773012,
+                "z": 0.15148
+            },
+            "front": {
+                "x": 1.45963562516,
+                "y": -0.09748297935,
+                "z": 4.1444
+            },
+            "position": {
+                "x": -6.6150683382,
+                "y": 135.8449765181,
+                "z": 108.982
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A38"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A40",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 0.4883881744902,
+                "y": -0.1690692148842,
+                "z": 4.36452
+            },
+            "up": {
+                "x": -0.04944271534,
+                "y": 4.39122462231,
+                "z": 0.175636
+            },
+            "front": {
+                "x": -4.36750844391,
+                "y": -0.06861416475,
+                "z": 0.486064
+            },
+            "position": {
+                "x": -71.10622567702,
+                "y": 133.31553935282,
+                "z": 85.2164
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A40"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A41",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 0.4883881744902,
+                "y": -0.1690692148842,
+                "z": 4.36452
+            },
+            "up": {
+                "x": -0.04944271534,
+                "y": 4.39122462231,
+                "z": 0.175636
+            },
+            "front": {
+                "x": -4.36750844391,
+                "y": -0.06861416475,
+                "z": 0.486064
+            },
+            "position": {
+                "x": -70.33618429002,
+                "y": 133.04895437642,
+                "z": 92.0978
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A41"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A42",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 0.4883881744902,
+                "y": -0.1690692148842,
+                "z": 4.36452
+            },
+            "up": {
+                "x": -0.04944271534,
+                "y": 4.39122462231,
+                "z": 0.175636
+            },
+            "front": {
+                "x": -4.36750844391,
+                "y": -0.06861416475,
+                "z": 0.486064
+            },
+            "position": {
+                "x": -69.56623173105,
+                "y": 132.7824242597,
+                "z": 98.9793
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A42"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A43",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 0.4883881744902,
+                "y": -0.1690692148842,
+                "z": 4.36452
+            },
+            "up": {
+                "x": -0.04944271534,
+                "y": 4.39122462231,
+                "z": 0.175636
+            },
+            "front": {
+                "x": -4.36750844391,
+                "y": -0.06861416475,
+                "z": 0.486064
+            },
+            "position": {
+                "x": -68.79618257948,
+                "y": 132.51586826108,
+                "z": 105.8607
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A43"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A44",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 0.4883872085642,
+                "y": -0.1690689560652,
+                "z": 4.36452
+            },
+            "up": {
+                "x": -0.04944271534,
+                "y": 4.39122462231,
+                "z": 0.175636
+            },
+            "front": {
+                "x": -4.36750844391,
+                "y": -0.06861416475,
+                "z": 0.486064
+            },
+            "position": {
+                "x": -68.02613860429,
+                "y": 132.24929294394,
+                "z": 112.7422
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A44"
+        },
+        {
+            "name": "Portal_MIL_BarrierConcreteWall_01_192x320_A45",
+            "type": "BarrierConcreteRoadSide_01_A",
+            "right": {
+                "x": 0.4883872085642,
+                "y": -0.1690689560652,
+                "z": 4.36452
+            },
+            "up": {
+                "x": -0.04944271534,
+                "y": 4.39122462231,
+                "z": 0.175636
+            },
+            "front": {
+                "x": -4.36750844391,
+                "y": -0.06861416475,
+                "z": 0.486064
+            },
+            "position": {
+                "x": -67.2560946291,
+                "y": 131.9827176268,
+                "z": 119.6236
+            },
+            "id": "Map Assets For Outer Wall/Portal_MIL_BarrierConcreteWall_01_192x320_A45"
+        },
+        {
+            "name": "DeployCam",
+            "type": "DeployCam",
+            "right": {
+                "x": -0.453991,
+                "y": -1.84746e-08,
+                "z": -0.891006
+            },
+            "up": {
+                "x": -0.870884,
+                "y": -0.211325,
+                "z": 0.443738
+            },
+            "front": {
+                "x": -0.188292,
+                "y": 0.977416,
+                "z": 0.0959395
+            },
+            "position": {
+                "x": -37.5577,
+                "y": 517.191,
+                "z": 92.7459
+            },
+            "id": "DeployCam"
+        },
+        {
+            "name": "Sound Effects",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_ObjetiveUnlockCountdownTick_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickFriendly_OneShot2D",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickFriendly_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickFriendly_OneShot2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickIcon_IsFriendly_OneShot2D",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickIcon_IsFriendly_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickIcon_IsFriendly_OneShot2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickInBetweenEnemy_OneShot2D",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickInBetweenEnemy_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickInBetweenEnemy_OneShot2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickInBetweenFriendly_OneShot2D",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickInBetweenFriendly_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickInBetweenFriendly_OneShot2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D2",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D2"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_OnCapturedByFriendly_OneShot2D",
+            "ObjId": 900,
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_OnCapturedByFriendly_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_OnCapturedByFriendly_OneShot2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTick_IsEnemy_SimpleLoop2D",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTick_IsEnemy_SimpleLoop2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTick_IsEnemy_SimpleLoop2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTick_IsFriendly_SimpleLoop2D",
+            "ObjId": 901,
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTick_IsFriendly_SimpleLoop2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTick_IsFriendly_SimpleLoop2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_ObjetiveUnlockCountdownTick_OneShot2D",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_ObjetiveUnlockCountdownTick_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_ObjetiveUnlockCountdownTick_OneShot2D"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D3",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D3"
+        },
+        {
+            "name": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D4",
+            "type": "SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 149.428,
+                "z": 86.9496
+            },
+            "id": "Sound Effects/SFX_UI_Gamemode_Shared_CaptureObjectives_CapturingTickEnemy_OneShot2D4"
+        },
+        {
+            "name": "Sector",
+            "ObjId": 200,
+            "AutoEnableVehicles": false,
+            "CapturePoints": [
+                "Sector/Capture Points/CapturePointA",
+                "Sector/Capture Points/CapturePointB",
+                "Sector/Capture Points/CapturePointC"
+            ],
+            "SectorArea": "CombatArea/CollisionPolygon3D",
+            "type": "Sector",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "id": "Sector",
+            "linked": [
+                "SectorArea",
+                "CapturePoints"
+            ]
+        },
+        {
+            "name": "CapturePointA",
+            "ObjId": 100,
+            "OutlineSetting": "Flat",
+            "CameraRotationTypeRange": true,
+            "TacticalAdviceLandVehicleFriendly": false,
+            "InfantrySpawnPoints_Team1": [
+                "Sector/Capture Points/CapturePointA/SpawnPointA1",
+                "Sector/Capture Points/CapturePointA/SpawnPointA2",
+                "Sector/Capture Points/CapturePointA/SpawnPointA3",
+                "Sector/Capture Points/CapturePointA/SpawnPointA4",
+                "Sector/Capture Points/CapturePointA/SpawnPointA5",
+                "Sector/Capture Points/CapturePointA/SpawnPointA6"
+            ],
+            "InfantrySpawnPoints_Team2": [
+                "Sector/Capture Points/CapturePointA/SpawnPointA1",
+                "Sector/Capture Points/CapturePointA/SpawnPointA2",
+                "Sector/Capture Points/CapturePointA/SpawnPointA3",
+                "Sector/Capture Points/CapturePointA/SpawnPointA4",
+                "Sector/Capture Points/CapturePointA/SpawnPointA5",
+                "Sector/Capture Points/CapturePointA/SpawnPointA6"
+            ],
+            "CaptureArea": "Sector/Capture Points/CapturePointA/Capture Point A Area",
+            "type": "CapturePoint",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -64.9814,
+                "y": 134.497,
+                "z": 85.086
+            },
+            "id": "Sector/Capture Points/CapturePointA",
+            "linked": [
+                "CaptureArea",
+                "InfantrySpawnPoints_Team1",
+                "InfantrySpawnPoints_Team2"
+            ]
+        },
+        {
+            "name": "Capture Point A Area",
+            "type": "PolygonVolume",
+            "metadata/_custom_type_script": "uid://ck5uniw0pl6u8",
+            "color": [
+                0,
+                0.6,
+                0.7,
+                0.42
+            ],
+            "id": "Sector/Capture Points/CapturePointA/Capture Point A Area",
+            "height": 13.265,
+            "points": [
+                {
+                    "x": -70.0471654,
+                    "y": 134.497,
+                    "z": 80.086
+                },
+                {
+                    "x": -68.9616554,
+                    "y": 134.497,
+                    "z": 91.92812
+                },
+                {
+                    "x": -60.0471654,
+                    "y": 134.497,
+                    "z": 90.086
+                },
+                {
+                    "x": -60.0471654,
+                    "y": 134.497,
+                    "z": 80.086
+                }
+            ]
+        },
+        {
+            "name": "SpawnPointA1",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -63.8817,
+                "y": 134.497,
+                "z": 85.967096
+            },
+            "id": "Sector/Capture Points/CapturePointA/SpawnPointA1"
+        },
+        {
+            "name": "SpawnPointA2",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -61.0821,
+                "y": 134.497,
+                "z": 83.22759
+            },
+            "id": "Sector/Capture Points/CapturePointA/SpawnPointA2"
+        },
+        {
+            "name": "SpawnPointA3",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -65.110962,
+                "y": 134.497,
+                "z": 83.77274
+            },
+            "id": "Sector/Capture Points/CapturePointA/SpawnPointA3"
+        },
+        {
+            "name": "SpawnPointA4",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -62.08188,
+                "y": 134.497,
+                "z": 84.01942
+            },
+            "id": "Sector/Capture Points/CapturePointA/SpawnPointA4"
+        },
+        {
+            "name": "SpawnPointA5",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -63.81837,
+                "y": 134.497,
+                "z": 84.04243
+            },
+            "id": "Sector/Capture Points/CapturePointA/SpawnPointA5"
+        },
+        {
+            "name": "SpawnPointA6",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -63.92738,
+                "y": 134.497,
+                "z": 87.55903
+            },
+            "id": "Sector/Capture Points/CapturePointA/SpawnPointA6"
+        },
+        {
+            "name": "CapturePointB",
+            "ObjId": 101,
+            "InfantrySpawnPoints_Team1": [
+                "Sector/Capture Points/CapturePointB/SpawnPointB1",
+                "Sector/Capture Points/CapturePointB/SpawnPointB2",
+                "Sector/Capture Points/CapturePointB/SpawnPointB3",
+                "Sector/Capture Points/CapturePointB/SpawnPointB4",
+                "Sector/Capture Points/CapturePointB/SpawnPointB5",
+                "Sector/Capture Points/CapturePointB/SpawnPointB6"
+            ],
+            "InfantrySpawnPoints_Team2": [
+                "Sector/Capture Points/CapturePointB/SpawnPointB1",
+                "Sector/Capture Points/CapturePointB/SpawnPointB2",
+                "Sector/Capture Points/CapturePointB/SpawnPointB3",
+                "Sector/Capture Points/CapturePointB/SpawnPointB4",
+                "Sector/Capture Points/CapturePointB/SpawnPointB5",
+                "Sector/Capture Points/CapturePointB/SpawnPointB6"
+            ],
+            "CaptureArea": "Sector/Capture Points/CapturePointB/Capture Point B Area",
+            "type": "CapturePoint",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -26.7394,
+                "y": 134.425,
+                "z": 74.2599
+            },
+            "id": "Sector/Capture Points/CapturePointB",
+            "linked": [
+                "CaptureArea",
+                "InfantrySpawnPoints_Team1",
+                "InfantrySpawnPoints_Team2"
+            ]
+        },
+        {
+            "name": "Capture Point B Area",
+            "type": "PolygonVolume",
+            "metadata/_custom_type_script": "uid://ck5uniw0pl6u8",
+            "color": [
+                0,
+                0.6,
+                0.7,
+                0.42
+            ],
+            "id": "Sector/Capture Points/CapturePointB/Capture Point B Area",
+            "height": 11.41,
+            "points": [
+                {
+                    "x": -31.7394,
+                    "y": 134.08537,
+                    "z": 69.2599
+                },
+                {
+                    "x": -31.7394,
+                    "y": 134.08537,
+                    "z": 79.2599
+                },
+                {
+                    "x": -21.7394,
+                    "y": 134.08537,
+                    "z": 79.2599
+                },
+                {
+                    "x": -21.7394,
+                    "y": 134.08537,
+                    "z": 69.2599
+                }
+            ]
+        },
+        {
+            "name": "SpawnPointB1",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -25.6397,
+                "y": 134.425,
+                "z": 75.140996
+            },
+            "id": "Sector/Capture Points/CapturePointB/SpawnPointB1"
+        },
+        {
+            "name": "SpawnPointB2",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -22.8401,
+                "y": 134.425,
+                "z": 72.40149
+            },
+            "id": "Sector/Capture Points/CapturePointB/SpawnPointB2"
+        },
+        {
+            "name": "SpawnPointB3",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -26.868962,
+                "y": 134.425,
+                "z": 72.94664
+            },
+            "id": "Sector/Capture Points/CapturePointB/SpawnPointB3"
+        },
+        {
+            "name": "SpawnPointB4",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -23.83988,
+                "y": 134.425,
+                "z": 73.19332
+            },
+            "id": "Sector/Capture Points/CapturePointB/SpawnPointB4"
+        },
+        {
+            "name": "SpawnPointB5",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -25.57637,
+                "y": 134.425,
+                "z": 73.21633
+            },
+            "id": "Sector/Capture Points/CapturePointB/SpawnPointB5"
+        },
+        {
+            "name": "SpawnPointB6",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 0.999884,
+                "y": 0,
+                "z": 0.0152535
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.0152535,
+                "y": 0,
+                "z": 0.999884
+            },
+            "position": {
+                "x": -24.47467,
+                "y": 134.425,
+                "z": 76.10029
+            },
+            "id": "Sector/Capture Points/CapturePointB/SpawnPointB6"
+        },
+        {
+            "name": "CapturePointC",
+            "ObjId": 102,
+            "InfantrySpawnPoints_Team1": [
+                "Sector/Capture Points/CapturePointC/SpawnPointC1",
+                "Sector/Capture Points/CapturePointC/SpawnPointC2",
+                "Sector/Capture Points/CapturePointC/SpawnPointC3",
+                "Sector/Capture Points/CapturePointC/SpawnPointC4",
+                "Sector/Capture Points/CapturePointC/SpawnPointC5",
+                "Sector/Capture Points/CapturePointC/SpawnPointC6"
+            ],
+            "InfantrySpawnPoints_Team2": [
+                "Sector/Capture Points/CapturePointC/SpawnPointC1",
+                "Sector/Capture Points/CapturePointC/SpawnPointC2",
+                "Sector/Capture Points/CapturePointC/SpawnPointC3",
+                "Sector/Capture Points/CapturePointC/SpawnPointC4",
+                "Sector/Capture Points/CapturePointC/SpawnPointC5",
+                "Sector/Capture Points/CapturePointC/SpawnPointC6"
+            ],
+            "CaptureArea": "Sector/Capture Points/CapturePointC/Capture Point C Area",
+            "type": "CapturePoint",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": -33.9769,
+                "y": 134.578,
+                "z": 108.258
+            },
+            "id": "Sector/Capture Points/CapturePointC",
+            "linked": [
+                "CaptureArea",
+                "InfantrySpawnPoints_Team1",
+                "InfantrySpawnPoints_Team2"
+            ]
+        },
+        {
+            "name": "Capture Point C Area",
+            "type": "PolygonVolume",
+            "metadata/_custom_type_script": "uid://ck5uniw0pl6u8",
+            "color": [
+                0,
+                0.6,
+                0.7,
+                0.42
+            ],
+            "id": "Sector/Capture Points/CapturePointC/Capture Point C Area",
+            "height": 12.42,
+            "points": [
+                {
+                    "x": -38.9769,
+                    "y": 134.578,
+                    "z": 103.258
+                },
+                {
+                    "x": -38.9769,
+                    "y": 134.578,
+                    "z": 113.258
+                },
+                {
+                    "x": -28.9769,
+                    "y": 134.578,
+                    "z": 113.258
+                },
+                {
+                    "x": -28.9769,
+                    "y": 134.578,
+                    "z": 103.258
+                }
+            ]
+        },
+        {
+            "name": "SpawnPointC1",
+            "type": "SpawnPoint",
+            "right": {
+                "x": -0.865152,
+                "y": 0,
+                "z": 0.501511
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.501511,
+                "y": 0,
+                "z": -0.865152
+            },
+            "position": {
+                "x": -35.93656,
+                "y": 134.578,
+                "z": 108.776166
+            },
+            "id": "Sector/Capture Points/CapturePointC/SpawnPointC1"
+        },
+        {
+            "name": "SpawnPointC2",
+            "type": "SpawnPoint",
+            "right": {
+                "x": -0.25207,
+                "y": 0,
+                "z": -0.96771
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0.96771,
+                "y": 0,
+                "z": -0.25207
+            },
+            "position": {
+                "x": -30.0776,
+                "y": 134.578,
+                "z": 106.39959
+            },
+            "id": "Sector/Capture Points/CapturePointC/SpawnPointC2"
+        },
+        {
+            "name": "SpawnPointC3",
+            "type": "SpawnPoint",
+            "right": {
+                "x": -0.865152,
+                "y": 0,
+                "z": 0.501511
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.501511,
+                "y": 0,
+                "z": -0.865152
+            },
+            "position": {
+                "x": -34.106462,
+                "y": 134.578,
+                "z": 106.94474
+            },
+            "id": "Sector/Capture Points/CapturePointC/SpawnPointC3"
+        },
+        {
+            "name": "SpawnPointC4",
+            "type": "SpawnPoint",
+            "right": {
+                "x": -0.405142,
+                "y": 0,
+                "z": -0.914254
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0.914254,
+                "y": 0,
+                "z": -0.405142
+            },
+            "position": {
+                "x": -31.07738,
+                "y": 134.578,
+                "z": 107.19142
+            },
+            "id": "Sector/Capture Points/CapturePointC/SpawnPointC4"
+        },
+        {
+            "name": "SpawnPointC5",
+            "type": "SpawnPoint",
+            "right": {
+                "x": -0.865152,
+                "y": 0,
+                "z": 0.501511
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.501511,
+                "y": 0,
+                "z": -0.865152
+            },
+            "position": {
+                "x": -32.81387,
+                "y": 134.578,
+                "z": 107.21443
+            },
+            "id": "Sector/Capture Points/CapturePointC/SpawnPointC5"
+        },
+        {
+            "name": "SpawnPointC6",
+            "type": "SpawnPoint",
+            "right": {
+                "x": -0.865152,
+                "y": 0,
+                "z": 0.501511
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": -0.501511,
+                "y": 0,
+                "z": -0.865152
+            },
+            "position": {
+                "x": -31.71217,
+                "y": 134.578,
+                "z": 110.09839
+            },
+            "id": "Sector/Capture Points/CapturePointC/SpawnPointC6"
+        }
+    ],
+    "Static": [
+        {
+            "name": "MP_Capstone_Terrain",
+            "type": "MP_Capstone_Terrain",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "id": "Static/MP_Capstone_Terrain"
+        },
+        {
+            "name": "MP_Capstone_Assets",
+            "type": "MP_Capstone_Assets",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "id": "Static/MP_Capstone_Assets"
+        }
+    ]
+}
