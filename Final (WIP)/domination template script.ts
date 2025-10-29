@@ -31,6 +31,7 @@
 // KNOWN ISSUES
 // =================================================================
 
+//SCORING NEEDS FIXING - DOESNT SEEM TO BE UPDATING TIMERS CORRECTLY
 //Capture point and neutralisation times are currently bugged in Portal. As soon as these are fixed or a solution
 //to making them work properly, I will roll out a fix
 //Working on spawn points also to make them more favourable
@@ -739,7 +740,7 @@ function updateTeamScores() {
   capturePoints.forEach((capPoint, index) => {
     const currentOwner = mod.GetCurrentOwnerTeam(capPoint);
     
-    // Check for ownership change
+    // Check for ownership change - not actually need ATM but may be useful
     if (!mod.Equals(currentOwner, previousCaptureOwners[index])) {
       // Ownership changed - someone captured this point
       previousCaptureOwners[index] = currentOwner;
@@ -793,7 +794,7 @@ if (teamScoreTimers[0] >= team1Rate && team1Rate > 0) {
   // Step 5: Update UI displays
   upDateScoreDisplay(team1PointsHeld, team2PointsHeld);
 
-
+ // update crown icon to reflect team in lead colour
   if (mod.GetGameModeScore(teams[1]) > mod.GetGameModeScore(teams[2])) {
         mod.SetUIImageColor(mod.FindUIWidgetWithName(mod.stringkeys.centre_icon), mod.CreateVector(0.6,0.9,0.9))
   } else if (mod.GetGameModeScore(teams[2]) > mod.GetGameModeScore(teams[1])) {
