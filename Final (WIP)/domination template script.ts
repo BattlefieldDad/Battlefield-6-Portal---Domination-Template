@@ -31,7 +31,7 @@
 // KNOWN ISSUES
 // =================================================================
 
-//SCORING NEEDS FIXING - DOESNT SEEM TO BE UPDATING TIMERS CORRECTLY
+//SCORING NEEDS FIXING - DOESNT SEEM TO BE UPDATING TIMERS CORRECTLY ON OCCASION - DEBUG WITH CONSOLE
 //Capture point and neutralisation times are currently bugged in Portal. As soon as these are fixed or a solution
 //to making them work properly, I will roll out a fix
 //Working on spawn points also to make them more favourable
