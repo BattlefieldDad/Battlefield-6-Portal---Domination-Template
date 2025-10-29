@@ -1,19 +1,111 @@
-//NOTE - Currently adding more comments and rearranging code for easier edits for players using the template
+// =================================================================
+// DOMINATION GAME MODE - SCRIPT TEMPLATE (WIP)
+// =================================================================
+/* This mod implements a domination-style game mode with:
+ - Capture point control mechanics
+ - Real-time player statistics tracking
+ - Custom scoreboard with kills, deaths, assists, and captures */
+// =================================================================
 
 // =================================================================
-// DOMINATION GAME MODE - CUSTOM SCOREBOARD IMPLEMENTATION
+// CREDITS
 // =================================================================
-// This mod implements a domination-style game mode with:
-// - Capture point control mechanics
-// - Real-time player statistics tracking
-// - Custom scoreboard with kills, deaths, assists, and captures
+
+/* You are free to duplicate this code for your own modes but please credit BattlefieldDad for the original.
+   You will be able to find a guide to editing this template on YouTube shortly but it has been designed to be easily customised
+   by anyone regardless of experience */
+
 // =================================================================
+// NOTES
+// =================================================================
+
+/* Currently adding more comments and rearranging code for easier edits for players using the template
+   Adding additional setting options to provide more flexibility for the template
+   This implementation differs slightly from the guide version as we use some built in features of typescript for score tracking
+   etc rather than built in object variables
+   The choice of which way to do this depends on how comfortable you are with typescript and dictionaries
+   I find the blocks a little unwieldy and the built in dictionary approach easier to handle in terms of commands
+   But ultimately both approaches work.
+
+// =================================================================
+// KNOWN ISSUES
+// =================================================================
+
+//Capture point and neutralisation times are currently bugged in Portal. As soon as these are fixed or a solution
+//to making them work properly, I will roll out a fix
+//Working on spawn points also to make them more favourable
+//AI is pretty rudimentary in this version and could be enhanced - but they work roughly as intended
+//Issues with voice overs need to be fixed
+
+// =================================================================
+// TODO
+// =================================================================
+
+/* 1. Implement capture point enable/disable
+   2. Check fix for cap timers
+   3. Make capture points more easily extended to add more
+   4. Make Cap point id's more flexible
+   5. Implement voice overs more effectively
+   6. Make sure correct voice overs and scores show to correct teams in main UI.
+   */
+
+// =================================================================
+// PLAYER STATISTICS TRACKING
+// =================================================================
+/* Interface to track individual player statistics
+   This can be expanded with more stats as needed
+   Used to track and update player performance in the scoreboard
+   */
+
+interface PlayerStats {
+    kills: number;
+    deaths: number;
+    assists: number;
+    captures: number;
+    score: number;  // Custom score separate from game mode score
+}
+
+// Dictionary to store player statistics - key is player object ID
+let playerStatsMap: { [key: number]: PlayerStats } = {};
+
+// Track previous capture point owners to detect changes
+let previousCaptureOwners: any[] = [null, null, null]; // For 3 capture points
+
+
+// =================================================================
+// GAME OBJECTS SETUP
+// =================================================================
+// Game objects - will be initialized when game mode starts
+let capturePoints: any[] = [];
+let teams: any[] = [];
+
+// =================================================================
+// GAME CONFIGURATION VARIABLES
+// =================================================================
+//Use these variables to tweak game settings
+let captureTime = 5;                    // Time in seconds to capture a point
+let neutralisationTime = 2;              // Time in seconds to neutralize a point
+let capPointMultiplier = 1;              // Multiplier for capture point scoring
+
+let targetScore = 200;                   // Score needed to win the match
+let gameModeTime = 600;                  // Match time limit in seconds (10 minutes)
+let scoreUpdateInterval = 1;            // Interval in seconds to update team scores based on points held
+let scoreBoardColumnWidth = 10;          // Width of scoreboard columns
+
+let capturePointDeploymentEnabled = true //Enables or disables deployment from capture points
+
+// =================================================================
+// PLAYER SCORING CONFIGURATION
+// =================================================================
+// Points awarded for different player actions
+const POINTS_PER_KILL = 100;            // Points awarded for each kill
+const POINTS_PER_ASSIST = 50;           // Points awarded for each assist  
+const POINTS_PER_CAPTURE = 200;         // Points awarded for each capture point captured
+
 
 // =================================================================
 // UI SETUP - CONTAINER AND TEXT ELEMENTS
 // =================================================================
-
-
 
 //OUTER CONTAINER HOLDS ALL ELEMENTS AT TOP.
 mod.AddUIContainer(
@@ -308,57 +400,6 @@ mod.AddUIText(
 let objcText = mod.FindUIWidgetWithName(mod.stringkeys.objctext_name);
 
 
-
-
-// =================================================================
-// PLAYER STATISTICS TRACKING
-// =================================================================
-// Interface to track individual player statistics
-// This can be expanded with more stats as needed
-// Used to track and update player performance in the scoreboard
-interface PlayerStats {
-    kills: number;
-    deaths: number;
-    assists: number;
-    captures: number;
-    score: number;  // Custom score separate from game mode score
-}
-
-// Dictionary to store player statistics - key is player object ID
-let playerStatsMap: { [key: number]: PlayerStats } = {};
-
-// Track previous capture point owners to detect changes
-let previousCaptureOwners: any[] = [null, null, null]; // For 3 capture points
-
-
-// =================================================================
-// GAME OBJECTS SETUP
-// =================================================================
-// Game objects - will be initialized when game mode starts
-let capturePoints: any[] = [];
-let teams: any[] = [];
-
-// =================================================================
-// GAME CONFIGURATION VARIABLES
-// =================================================================
-//Use these variables to tweak game settings
-let captureTime = 5;                    // Time in seconds to capture a point
-let neutralisationTime = 2;              // Time in seconds to neutralize a point
-let capPointMultiplier = 1;              // Multiplier for capture point scoring
-
-let targetScore = 200;                   // Score needed to win the match
-let gameModeTime = 600;                  // Match time limit in seconds (10 minutes)
-let scoreUpdateInterval = 1;            // Interval in seconds to update team scores based on points held
-let scoreBoardColumnWidth = 10;          // Width of scoreboard columns
-
-// =================================================================
-// PLAYER SCORING CONFIGURATION
-// =================================================================
-// Points awarded for different player actions
-const POINTS_PER_KILL = 100;            // Points awarded for each kill
-const POINTS_PER_ASSIST = 50;           // Points awarded for each assist  
-const POINTS_PER_CAPTURE = 200;         // Points awarded for each capture point captured
-
 //******************************************************/
 //EVENT HOOKS
 //******************************************************/
@@ -379,7 +420,8 @@ export async function OnGameModeStarted() {
 
 }
 
-//Attempt to fix cap point timers
+
+//Attempt to fix cap point timers - this can be removed once issues are fixed
 let gameOngoing = false;
 
 
