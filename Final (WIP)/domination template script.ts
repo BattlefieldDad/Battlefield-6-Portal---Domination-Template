@@ -422,44 +422,15 @@ export async function OnGameModeStarted() {
 }
 
 
-//Attempt to fix cap point timers - this can be removed once issues are fixed
-let gameOngoing = false;
-
 
 export function OnPlayerDeployed(
     eventPlayer: mod.Player
 ) {
-    //not really working though...
-   if (gameOngoing == false) {
-    capturePoints.forEach((capPoint, index) => {
-        if (capPoint) {
-            mod.SetCapturePointNeutralizationTime(capPoint, neutralisationTime);
-        }
-    });
-    gameOngoing = true;
-    }
 
     //set random target for AI
     let objectiveToTarget = mod.RandomReal(100,102);
     objectiveToTarget = mod.RoundToInteger(objectiveToTarget);
     mod.AIMoveToBehavior(eventPlayer, mod.GetObjectPosition(mod.GetSpatialObject(objectiveToTarget)));
-}
-
-
-
-/**
- * Force set capture point timing values after game mode initialization
- */
-
-//removed for now as serves no purpose - still trying to fix cap point timers!
-function setCapturePointTiming() {
-    capturePoints.forEach((capPoint, index) => {
-        if (capPoint) {
-            mod.SetCapturePointNeutralizationTime(capPoint, neutralisationTime);
-            mod.SetCapturePointCapturingTime(capPoint, captureTime);
-            mod.SetMaxCaptureMultiplier(capPoint, capPointMultiplier);
-        }
-    });
 }
 
 
@@ -570,9 +541,10 @@ function setUpCapturePoints() {
             return;
         }
         
-        // Enable the capture point first
+        //Enable the capture point first
+        //CURRENTLY TIMERS ARE BROKEN - AWAITING A FIX!
         mod.EnableGameModeObjective(capPoint, false);
-       // mod.SetCapturePointNeutralizationTime(capPoint, neutralisationTime);
+        mod.SetCapturePointNeutralizationTime(capPoint, neutralisationTime);
         mod.SetCapturePointCapturingTime(capPoint, captureTime);
         mod.EnableCapturePointDeploying(capPoint, true);
         mod.SetMaxCaptureMultiplier(capPoint, capPointMultiplier);
@@ -905,6 +877,9 @@ export async function OnCapturePointCaptured(
 
     const capPointID = mod.GetObjId(eventCapturePoint);
 
+    //Timer Flip Flop to fix issue with broken timer settings
+    mod.SetCapturePointNeutralizationTime(eventCapturePoint, captureTime);
+
     if (capPointID === 100) {
         if (mod.Equals(mod.GetCurrentOwnerTeam(eventCapturePoint), teams[1])) {
             mod.SetUIWidgetBgColor(mod.FindUIWidgetWithName(mod.stringkeys.obja_name), mod.CreateVector(0.6235294117647059, 0.8705882352941177, 0.9215686274509803));
@@ -1027,8 +1002,10 @@ export async function OnCapturePointCaptured(
     }
 
 //added temporarily to try to speed up cap time
+//FIXES CAP TIME BUT BREAKS NEUTRALISATION TIME
 export async function OnCapturePointCapturing(
     eventCapturePoint: mod.CapturePoint
 ) {
+    //Timer Flip Flop to fix issue with broken timer settings
     mod.SetCapturePointCapturingTime(eventCapturePoint, captureTime);
 }
