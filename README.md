@@ -1,3 +1,5 @@
+NOTE - This is a work in progress project. You may use the code here in your own projects but please credit Battlefield Dad in your project. Thanks!
+
 # Battlefield 6 Domination Game Mode Template
 
 A comprehensive domination-style game mode for Portal SDK with real-time scoring, player statistics tracking, and custom UI elements.
@@ -5,6 +7,10 @@ A comprehensive domination-style game mode for Portal SDK with real-time scoring
 ## Overview
 
 This template implements a classic domination game mode where two teams compete to control three capture points (A, B, and C) on the map. Teams earn points over time based on how many capture points they control, with the first team to reach the target score winning the match.
+
+For those following along with the tutorial video, the script at the end of each stage is provided along with the strings.json (not part 1 though)
+
+There is also here my final WIP experience. This deviates from the tutorial quite a bit as it uses some more advanced techniques and has some other additional features that would be too much to put in the first guide. I will be adding to this WIP all of the spatial data for each map I edit once completedso you can just slot it into your own mode as well as any tscn files so you can edit them yourselves (move hq's spawn and cap points).
 
 ## Key Features
 
@@ -153,8 +159,8 @@ The mod includes voice over callouts for:
 
 ## Credits
 
-This template provides a solid foundation for domination-style game modes and can be extended with additional features as needed. The modular design allows for easy customization and expansion.
+This template provides a solid foundation for domination-style game modes and can be extended with additional features as needed. The modular design allows for easy customization and expansion. 
 
 ## License
 
-This template is provided as-is for educational and development purposes within the Portal ecosystem.
+This template is provided as-is for educational and development purposes within the Portal ecosystem. Please credit Battlefield Dad if you use it in your projects.
