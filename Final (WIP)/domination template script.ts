@@ -2619,7 +2619,7 @@ class FlashTextUI {
         });
     }
 }
-
+ 
 // Track fade and flash UIs per player
 let playerFadeUIs: { [playerId: number]: BlackScreenFadeUI } = {};
 let playerFlashUIs: { [playerId: number]: FlashTextUI } = {};
