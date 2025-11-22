@@ -235,7 +235,6 @@ export async function OnGameModeStarted() {
     );
 
     capturedSound = mod.SpawnObject(
-        //mod.RuntimeSpawn_Common.SFX_UI_Gamemode_Shared_CaptureObjectives_Captured_OneShot2D,
         mod.RuntimeSpawn_Common.SFX_UI_Gamemode_Shared_CaptureObjectives_OnCapturedByFriendly_OneShot2D,
         mod.CreateVector(0, 0, 0),
         mod.CreateVector(0, 0, 0),
@@ -300,33 +299,6 @@ async function capturePointUIUpdateLoop() {
     console.log("Capture point UI update loop ended");
 }
 
-/**
- * Trigger intro sequence for a player (fade from black + DOMINATION flash)
- */
-async function triggerPlayerIntro(player: mod.Player) {
-    const playerId = mod.GetObjId(player);
-    
-    // Create fade and flash UIs (fade UI starts at black)
-    playerFadeUIs[playerId] = new BlackScreenFadeUI(player);
-    playerFlashUIs[playerId] = new FlashTextUI(player, "domination_title", "intro_flash", 80, 600, 100, [1, 0.85, 0.3], [1, 0.5, 0.2]);
-    
-    // Play battle start voice-over sound
-    if (voiceOverSound) {
-        mod.PlayVO(voiceOverSound, mod.VoiceOverEvents2D.RoundStartGeneric, mod.VoiceOverFlags.Alpha, player);
-    }
-    
-    // Small wait to ensure widget is created, then fade out from black to reveal the game
-    await mod.Wait(0.1);
-    await playerFadeUIs[playerId].FadeOut();
-    
-    await mod.Wait(0.3);
-    
-    // Show DOMINATION flash text
-    if (playerFlashUIs[playerId]) {
-        playerFlashUIs[playerId].Trigger();
-    }
-}
-
 export async function OnPlayerDeployed(
     eventPlayer: mod.Player
 ) {
@@ -336,23 +308,11 @@ export async function OnPlayerDeployed(
     
     console.log("OnPlayerDeployed: Player " + playerId + " deployed");
     
-    // Ensure player has UI initialized (including team score UI)
-    if (!playerUIWidgets[playerId]) {
-        initialisePlayerUI(eventPlayer);
-    }
-    
     // Check if this is the player's first spawn
     if (!playerHasSpawnedFromHQ[playerId]) {
         // Mark that they have now spawned from HQ
         playerHasSpawnedFromHQ[playerId] = true;
         console.log("OnPlayerDeployed: First spawn for player " + playerId + " - allowing direct spawn");
-        
-        // Recreate team UI to ensure this player can see it (important for late joiners)
-        if (mod.Equals(playerTeam, teams[1])) {
-            recreateTeamUI(1);
-        } else if (mod.Equals(playerTeam, teams[2])) {
-            recreateTeamUI(2);
-        }
         
         // Trigger intro if within first 20 seconds of game
         const gameTime = mod.GetMatchTimeElapsed();
@@ -410,10 +370,11 @@ export async function OnPlayerDeployed(
         }
     }
     
-    //set random target for AI
-    let objectiveToTarget = mod.RandomReal(100,102);
-    objectiveToTarget = mod.RoundToInteger(objectiveToTarget);
-    mod.AIMoveToBehavior(eventPlayer, mod.GetObjectPosition(mod.GetSpatialObject(objectiveToTarget)));
+    // Set random target for AI on spawn and set them to sprint
+    if (mod.GetSoldierState(eventPlayer, mod.SoldierStateBool.IsAISoldier)) {
+        mod.AISetMoveSpeed(eventPlayer, mod.MoveSpeed.Sprint);
+        reassignAIToNewObjective(eventPlayer);
+    }
 }
 
 /**
@@ -593,6 +554,11 @@ export function OnPlayerEarnedKill(
         
         updatePlayerScoreboard(eventPlayer);
     }
+    
+    // If AI got the kill, reassign them to a new objective (prevents camping)
+    if (mod.GetSoldierState(eventPlayer, mod.SoldierStateBool.IsAISoldier)) {
+        reassignAIToNewObjective(eventPlayer);
+    }
 }
 
 /**
@@ -611,6 +577,11 @@ export function OnPlayerEarnedKillAssist(
         assistStats.score += POINTS_PER_ASSIST;
         
         updatePlayerScoreboard(eventPlayer);
+    }
+    
+    // If AI got the assist, reassign them to a new objective (prevents camping)
+    if (mod.GetSoldierState(eventPlayer, mod.SoldierStateBool.IsAISoldier)) {
+        reassignAIToNewObjective(eventPlayer);
     }
 }
 
@@ -741,10 +712,6 @@ export async function OnPlayerJoinGame(
   
   // Initialize first spawn tracking
   playerHasSpawnedFromHQ[playerId] = false;
-  
-  // Initialize capture progress tracking for tick sounds
-  playerCaptureProgress[playerId] = 0;
-  playerCaptureTick[playerId] = 0;
   
   // Recreate UI for the player's team so they can see it
   // Determine which team the player is on (check if teams array is initialized first)
@@ -1116,7 +1083,6 @@ function updateTeamScores() {
     mod.SetUIImageColor(teamUIWidgets[2].centreIcon, mod.CreateVector(0.6,0.9,0.9));
     
     // Show brackets around winning score (enemy for Team 1, friendly for Team 2)
-    // Team 1: Hide friendly brackets, show enemy brackets (Team 2's score is on enemy/right side)
     mod.SetUIWidgetVisible(teamUIWidgets[1].friendlyScoreBracketLeftVertical, false);
     mod.SetUIWidgetVisible(teamUIWidgets[1].friendlyScoreBracketLeftTop, false);
     mod.SetUIWidgetVisible(teamUIWidgets[1].friendlyScoreBracketLeftBottom, false);
@@ -1131,20 +1097,19 @@ function updateTeamScores() {
     mod.SetUIWidgetVisible(teamUIWidgets[1].enemyScoreBracketRightTop, true);
     mod.SetUIWidgetVisible(teamUIWidgets[1].enemyScoreBracketRightBottom, true);
     
-    // Team 2: Show friendly brackets, hide enemy brackets (Team 2's score is on friendly/left side)
-    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketLeftVertical, true);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketLeftTop, true);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketLeftBottom, true);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketRightVertical, true);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketRightTop, true);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketRightBottom, true);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketLeftVertical, false);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketLeftTop, false);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketLeftBottom, false);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketRightVertical, false);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketRightTop, false);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].friendlyScoreBracketRightBottom, false);
     
-    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketLeftVertical, false);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketLeftTop, false);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketLeftBottom, false);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketRightVertical, false);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketRightTop, false);
-    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketRightBottom, false);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketLeftVertical, true);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketLeftTop, true);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketLeftBottom, true);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketRightVertical, true);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketRightTop, true);
+    mod.SetUIWidgetVisible(teamUIWidgets[2].enemyScoreBracketRightBottom, true);
     
   } else {
     // Tied - show white crown and no brackets for both teams
@@ -1273,24 +1238,23 @@ function updatePlayerCapturingIndicator(player: any, capturePoint: any) {
 
     if (!widgets) return;
     
-    const playerTeam = mod.GetTeam(player);
-    
-    // Get current capture progress
+    // Get current capture progress and check if it changed (for tick sounds)
     const currentProgress = mod.GetCaptureProgress(capturePoint);
+    const playerTeamObj = mod.GetTeam(player);
     const previousProgress = playerCaptureProgress[playerId] || 0;
     
     // Check if progress has changed (for tick sound)
     if (currentProgress !== previousProgress) {
         playerCaptureTick[playerId] = (playerCaptureTick[playerId] || 0) + 1;
         
-        // Play tick sound every 5 ticks for faster feedback
+        // Play tick sound every 2 ticks for faster feedback
         if (playerCaptureTick[playerId] % 2 === 0) {
             const progressTeam = mod.GetOwnerProgressTeam(capturePoint);
             const isCapturing = currentProgress > previousProgress;
             
             if (isCapturing) {
                 // Progress is increasing
-                if (mod.Equals(playerTeam, progressTeam)) {
+                if (mod.Equals(playerTeamObj, progressTeam)) {
                     // Your team is capturing - play friendly tick
                     if (tickSoundTaking) {
                         mod.PlaySound(tickSoundTaking, 0.5, player);
@@ -1303,7 +1267,7 @@ function updatePlayerCapturingIndicator(player: any, capturePoint: any) {
                 }
             } else {
                 // Progress is decreasing
-                if (mod.Equals(playerTeam, progressTeam)) {
+                if (mod.Equals(playerTeamObj, progressTeam)) {
                     // Enemy is taking your point - play losing tick
                     if (tickSoundLosing) {
                         mod.PlaySound(tickSoundLosing, 0.5, player);
@@ -1343,13 +1307,13 @@ function updatePlayerCapturingIndicator(player: any, capturePoint: any) {
     const currentOwner = mod.GetCurrentOwnerTeam(capturePoint);
     const isNeutral = mod.Equals(currentOwner, teams[0]);
     
-    // Determine this player's team (1 or 2)
-    const playerTeamId = mod.Equals(playerTeam, teams[1]) ? 1 : 2;
-    const friendlyCount = playerTeamId === 1 ? team1Count : team2Count;
-    const enemyCount = playerTeamId === 1 ? team2Count : team1Count;
+    // Determine this player's team
+    const playerTeam = mod.Equals(playerTeamObj, teams[1]) ? 1 : 2;
+    const friendlyCount = playerTeam === 1 ? team1Count : team2Count;
+    const enemyCount = playerTeam === 1 ? team2Count : team1Count;
     
     // Check if we own the point and there are no enemies - if so, hide the indicator
-    const weOwnPoint = mod.Equals(currentOwner, teams[playerTeamId]);
+    const weOwnPoint = mod.Equals(currentOwner, teams[playerTeam]);
     if (weOwnPoint && enemyCount === 0) {
         // We own it and no contest - hide the indicator
         mod.SetUIWidgetVisible(widgets.capturingIndicatorContainer, false);
@@ -1588,8 +1552,10 @@ export async function OnCapturePointCaptured(
             stats.score += POINTS_PER_CAPTURE;      
             updatePlayerScoreboard(player);
             
-            // Show CAPTURED flash to this player
-            showCapturedFlash(player, eventCapturePoint);
+            // Show CAPTURED flash for players on the capturing team (not AI)
+            if (!mod.GetSoldierState(player, mod.SoldierStateBool.IsAISoldier)) {
+                showCapturedFlash(player, eventCapturePoint);
+            }
 
             //REDIRECT AI PLAYERS
             let choice = mod.RandomReal(1,2);
@@ -1606,46 +1572,6 @@ export async function OnCapturePointCaptured(
 
         } 
     }
-}
-
-/**
- * Show CAPTURED flash text to a player
- */
-function showCapturedFlash(player: mod.Player, capturePoint: mod.CapturePoint) {
-    const playerId = mod.GetObjId(player);
-    const capPointID = mod.GetObjId(capturePoint);
-    
-    // Determine which flag was captured and play the appropriate voice-over
-    let flagVoiceOver = mod.VoiceOverFlags.Alpha; // Default to Alpha
-    
-    if (capPointID === 100) {
-        flagVoiceOver = mod.VoiceOverFlags.Alpha;
-    } else if (capPointID === 101) {
-        flagVoiceOver = mod.VoiceOverFlags.Bravo;
-    } else if (capPointID === 102) {
-        flagVoiceOver = mod.VoiceOverFlags.Charlie;
-    }
-    
-    //Currently disabled as audio not working for cap points
-    // Play flag-specific capture voice-over ("Alpha captured!", "Bravo captured!", etc.)
-   // if (voiceOverSound) {
-   //     mod.PlayVO(voiceOverSound, mod.VoiceOverEvents2D.ObjectiveCaptured, flagVoiceOver, player);
-   // }
-    
-    // Play capture sound effect
-    if (capturedSound) {
-        mod.PlaySound(capturedSound, 1, player);
-    }
-    
-    // Create a temporary flash UI for CAPTURED message - smaller and blue tones
-    // textSize: 60 (smaller than 80), width: 450, height: 80, textColor: cyan-blue, lineColor: light blue
-    const capturedFlash = new FlashTextUI(player, "captured_title", "captured_flash", 60, 450, 80, [0.3, 0.7, 1.0], [0.5, 0.8, 1.0]);
-    capturedFlash.Trigger();
-    
-    // Clean up after 6 seconds
-    setTimeout(() => {
-        capturedFlash.Delete();
-    }, 6000);
 }
 
 
@@ -1703,8 +1629,16 @@ export async function OnCapturePointLost(
 export async function OnCapturePointCapturing(
     eventCapturePoint: mod.CapturePoint
 ) {
-    //Timer Flip Flop to fix issue with broken timer settings
-    mod.SetCapturePointCapturingTime(eventCapturePoint, captureTime);
+    // Only set capture time if the point is actually neutral (progress = 0)
+    // This prevents resetting neutralization time while a point is being neutralized
+    const captureProgress = mod.GetCaptureProgress(eventCapturePoint);
+    
+    if (captureProgress < 0.02) {
+        // Point is neutral, safe to set capture time
+        mod.SetCapturePointCapturingTime(eventCapturePoint, captureTime);
+    }
+    // If progress > 0, the point is either being neutralized or captured
+    // Don't touch the timers in this case
     
     // Update the capturing indicator for all players currently on this point
     updateAllPlayersOnPoint(eventCapturePoint);
@@ -1728,6 +1662,191 @@ export async function OnPlayerEnterCapturePoint(
         // Update the indicator with current capture status
         updatePlayerCapturingIndicator(eventPlayer, eventCapturePoint);
     }
+    
+    // AI BEHAVIOR: If AI enters a capture point, decide what to do next
+    if (mod.GetSoldierState(eventPlayer, mod.SoldierStateBool.IsAISoldier)) {
+        const playerTeam = mod.GetTeam(eventPlayer);
+        const pointOwner = mod.GetCurrentOwnerTeam(eventCapturePoint);
+        
+        // If this is an enemy or neutral point, stay and capture/defend
+        if (!mod.Equals(playerTeam, pointOwner)) {
+            await mod.Wait(1.5); // Brief delay
+            
+            if (mod.GetSoldierState(eventPlayer, mod.SoldierStateBool.IsAlive)) {
+                // Stay at this point and defend for 15 seconds
+                mod.AIDefendPositionBehavior(
+                    eventPlayer, 
+                    mod.GetObjectPosition(eventPlayer), 
+                    0, 
+                    15
+                );
+            }
+        } else {
+            // This point is already ours - find a new objective
+            reassignAIToNewObjective(eventPlayer);
+        }
+    }
+}
+
+/**
+ * Reassigns AI to a new objective (enemy or neutral capture point)
+ */
+function reassignAIToNewObjective(aiPlayer: mod.Player) {
+    if (!mod.GetSoldierState(aiPlayer, mod.SoldierStateBool.IsAlive)) {
+        return; // Don't assign objectives to dead AI
+    }
+    
+    const aiTeam = mod.GetTeam(aiPlayer);
+    const isInVehicle = mod.GetSoldierState(aiPlayer, mod.SoldierStateBool.IsInVehicle);
+    
+    // Find capture points that are NOT owned by this AI's team
+    const enemyOrNeutralPoints: number[] = [];
+    
+    for (const capturePoint of capturePoints) {
+        const owner = mod.GetCurrentOwnerTeam(capturePoint);
+        if (!mod.Equals(owner, aiTeam)) {
+            enemyOrNeutralPoints.push(mod.GetObjId(capturePoint));
+        }
+    }
+    
+    // If there are enemy/neutral points, go to one
+    if (enemyOrNeutralPoints.length > 0) {
+        const randomIndex = mod.RoundToInteger(mod.RandomReal(0, enemyOrNeutralPoints.length - 1));
+        const targetPointID = enemyOrNeutralPoints[randomIndex];
+        
+        console.log("AI reassigned to capture point " + targetPointID);
+        
+        // If in vehicle, use defend behavior with longer duration
+        if (isInVehicle) {
+            mod.AIDefendPositionBehavior(
+                aiPlayer, 
+                mod.GetObjectPosition(mod.GetSpatialObject(targetPointID)), 
+                15, 
+                90
+            );
+        } else {
+            mod.AIMoveToBehavior(aiPlayer, mod.GetObjectPosition(mod.GetSpatialObject(targetPointID)));
+        }
+    } else {
+        // All points are ours - defend a random one
+        const randomIndex = mod.RoundToInteger(mod.RandomReal(0, capturePoints.length - 1));
+        const targetPointID = mod.GetObjId(capturePoints[randomIndex]);
+        
+        console.log("AI defending friendly point " + targetPointID);
+        mod.AIDefendPositionBehavior(
+            aiPlayer, 
+            mod.GetObjectPosition(mod.GetSpatialObject(targetPointID)), 
+            0, 
+            30
+        );
+    }
+    
+    // Adjust speed based on proximity to enemies (like the example does)
+    adjustAISpeed(aiPlayer);
+}
+
+/**
+ * Adjusts AI movement speed based on proximity to enemies
+ * Sprint when far from enemies, slow down when close for better combat
+ */
+function adjustAISpeed(aiPlayer: mod.Player) {
+    if (!mod.GetSoldierState(aiPlayer, mod.SoldierStateBool.IsAlive)) {
+        return;
+    }
+    
+    const aiTeam = mod.GetTeam(aiPlayer);
+    const aiPosition = mod.GetObjectPosition(aiPlayer);
+    
+    // Find closest enemy
+    let closestEnemyDistance = 9999;
+    const allPlayers = mod.AllPlayers();
+    
+    for (let i = 0; i < mod.CountOf(allPlayers); i++) {
+        const otherPlayer = mod.ValueInArray(allPlayers, i);
+        
+        if (!mod.Equals(mod.GetTeam(otherPlayer), aiTeam)) {
+            if (mod.GetSoldierState(otherPlayer, mod.SoldierStateBool.IsAlive)) {
+                const distance = mod.DistanceBetween(aiPosition, mod.GetObjectPosition(otherPlayer));
+                if (distance < closestEnemyDistance) {
+                    closestEnemyDistance = distance;
+                }
+            }
+        }
+    }
+    
+    // Sprint when far, slow down when close
+    if (closestEnemyDistance > 30) {
+        mod.AISetMoveSpeed(aiPlayer, mod.MoveSpeed.Sprint);
+    } else {
+        mod.AISetMoveSpeed(aiPlayer, mod.MoveSpeed.InvestigateRun);
+    }
+}
+
+/**
+ * Triggers the intro sequence for a player - fade from black, show DOMINATION flash text, play voice-over
+ */
+async function triggerPlayerIntro(player: mod.Player) {
+    const playerId = mod.GetObjId(player);
+    
+    // Create fade and flash UIs (fade UI starts at black)
+    playerFadeUIs[playerId] = new BlackScreenFadeUI(player);
+    playerFlashUIs[playerId] = new FlashTextUI(player, "domination_title", "intro_flash", 80, 600, 100, [1, 0.85, 0.3], [1, 0.5, 0.2]);
+    
+    // Play battle start voice-over sound
+    if (voiceOverSound) {
+        mod.PlayVO(voiceOverSound, mod.VoiceOverEvents2D.RoundStartGeneric, mod.VoiceOverFlags.Alpha, player);
+    }
+    
+    // Small wait to ensure widget is created, then fade out from black to reveal the game
+    await mod.Wait(0.1);
+    await playerFadeUIs[playerId].FadeOut();
+    
+    await mod.Wait(0.3);
+    
+    // Show DOMINATION flash text
+    if (playerFlashUIs[playerId]) {
+        playerFlashUIs[playerId].Trigger();
+    }
+}
+
+/**
+ * Shows CAPTURED flash text and plays capture sounds/voice-overs for a player when they capture a point
+ */
+function showCapturedFlash(player: mod.Player, capturePoint: mod.CapturePoint) {
+    const playerId = mod.GetObjId(player);
+    const capPointID = mod.GetObjId(capturePoint);
+    
+    // Determine which flag was captured and play the appropriate voice-over
+    let flagVoiceOver = mod.VoiceOverFlags.Alpha; // Default to Alpha
+    
+    if (capPointID === 100) {
+        flagVoiceOver = mod.VoiceOverFlags.Alpha;
+    } else if (capPointID === 101) {
+        flagVoiceOver = mod.VoiceOverFlags.Bravo;
+    } else if (capPointID === 102) {
+        flagVoiceOver = mod.VoiceOverFlags.Charlie;
+    }
+    
+    //Currently disabled as audio not working for cap points
+    // Play flag-specific capture voice-over ("Alpha captured!", "Bravo captured!", etc.)
+   // if (voiceOverSound) {
+   //     mod.PlayVO(voiceOverSound, mod.VoiceOverEvents2D.ObjectiveCaptured, flagVoiceOver, player);
+   // }
+    
+    // Play capture sound effect
+    if (capturedSound) {
+        mod.PlaySound(capturedSound, 1, player);
+    }
+    
+    // Create a temporary flash UI for CAPTURED message - smaller and blue tones
+    // textSize: 60 (smaller than 80), width: 450, height: 80, textColor: cyan-blue, lineColor: light blue
+    const capturedFlash = new FlashTextUI(player, "captured_title", "captured_flash", 60, 450, 80, [0.3, 0.7, 1.0], [0.5, 0.8, 1.0]);
+    capturedFlash.Trigger();
+    
+    // Clean up after 6 seconds
+    setTimeout(() => {
+        capturedFlash.Delete();
+    }, 6000);
 }
 
 /**
@@ -1773,103 +1892,8 @@ function deleteTeamUIWidgets(teamId: number) {
 function recreateTeamUI(teamId: number) {
     deleteTeamUIWidgets(teamId);
     initialiseUIDisplay(teamId);
-    
-    // Restore capture point colors after recreating UI
-    restoreCapturePointColors(teamId);
 }
 
-/**
- * Restore capture point colors after UI recreation to reflect current ownership
- */
-function restoreCapturePointColors(teamId: number) {
-    const cyanColor = mod.CreateVector(0.6235294117647059, 0.8705882352941177, 0.9215686274509803);
-    const redColor = mod.CreateVector(0.9411764705882353, 0.33725490196078434, 0.33725490196078434);
-    const neutralBgColor = mod.CreateVector(0.2784313725490196, 0.2784313725490196, 0.2784313725490196);
-    const neutralTextColor = mod.CreateVector(0.8784313725490196, 0.8784313725490196, 0.8784313725490196);
-    
-    // Check each capture point and set colors based on current owner
-    capturePoints.forEach((capPoint, index) => {
-        const currentOwner = mod.GetCurrentOwnerTeam(capPoint);
-        const capPointID = mod.GetObjId(capPoint);
-        
-        // Point A (100)
-        if (capPointID === 100) {
-            if (mod.Equals(currentOwner, teams[1])) {
-                // Team 1 owns A
-                if (teamId === 1) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objAContainer, cyanColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objAText, cyanColor);
-                    mod.SetUITextColor(teamUIWidgets[1].objAText, cyanColor);
-                } else if (teamId === 2) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objAContainer, redColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objAText, redColor);
-                    mod.SetUITextColor(teamUIWidgets[2].objAText, redColor);
-                }
-            } else if (mod.Equals(currentOwner, teams[2])) {
-                // Team 2 owns A
-                if (teamId === 1) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objAContainer, redColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objAText, redColor);
-                    mod.SetUITextColor(teamUIWidgets[1].objAText, redColor);
-                } else if (teamId === 2) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objAContainer, cyanColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objAText, cyanColor);
-                    mod.SetUITextColor(teamUIWidgets[2].objAText, cyanColor);
-                }
-            }
-        }
-        
-        // Point B (101)
-        if (capPointID === 101) {
-            if (mod.Equals(currentOwner, teams[1])) {
-                if (teamId === 1) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objBContainer, cyanColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objbText, cyanColor);
-                    mod.SetUITextColor(teamUIWidgets[1].objbText, cyanColor);
-                } else if (teamId === 2) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objBContainer, redColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objbText, redColor);
-                    mod.SetUITextColor(teamUIWidgets[2].objbText, redColor);
-                }
-            } else if (mod.Equals(currentOwner, teams[2])) {
-                if (teamId === 1) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objBContainer, redColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objbText, redColor);
-                    mod.SetUITextColor(teamUIWidgets[1].objbText, redColor);
-                } else if (teamId === 2) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objBContainer, cyanColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objbText, cyanColor);
-                    mod.SetUITextColor(teamUIWidgets[2].objbText, cyanColor);
-                }
-            }
-        }
-        
-        // Point C (102)
-        if (capPointID === 102) {
-            if (mod.Equals(currentOwner, teams[1])) {
-                if (teamId === 1) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objCContainer, cyanColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objcText, cyanColor);
-                    mod.SetUITextColor(teamUIWidgets[1].objcText, cyanColor);
-                } else if (teamId === 2) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objCContainer, redColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objcText, redColor);
-                    mod.SetUITextColor(teamUIWidgets[2].objcText, redColor);
-                }
-            } else if (mod.Equals(currentOwner, teams[2])) {
-                if (teamId === 1) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objCContainer, redColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[1].objcText, redColor);
-                    mod.SetUITextColor(teamUIWidgets[1].objcText, redColor);
-                } else if (teamId === 2) {
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objCContainer, cyanColor);
-                    mod.SetUIWidgetBgColor(teamUIWidgets[2].objcText, cyanColor);
-                    mod.SetUITextColor(teamUIWidgets[2].objcText, cyanColor);
-                }
-            }
-        }
-    });
-}
 
 function initialiseUIDisplay(teamId: number) {
     // Creates UI for a specific team (1 or 2)
@@ -2423,11 +2447,11 @@ teamUIWidgets[teamId].objcText = mod.FindUIWidgetWithName(teamPrefix + mod.strin
 }
 
 // =================================================================
-// GAME START UI EFFECTS - BLACK SCREEN FADE AND FLASH TEXT
+// UI CLASSES FOR FADE AND FLASH EFFECTS
 // =================================================================
 
 /**
- * Black screen fade UI for game intro
+ * Fullscreen black fade UI - used for intro fade from black
  */
 class BlackScreenFadeUI {
     private player: mod.Player;
@@ -2619,8 +2643,7 @@ class FlashTextUI {
         });
     }
 }
- 
+
 // Track fade and flash UIs per player
 let playerFadeUIs: { [playerId: number]: BlackScreenFadeUI } = {};
 let playerFlashUIs: { [playerId: number]: FlashTextUI } = {};
-
